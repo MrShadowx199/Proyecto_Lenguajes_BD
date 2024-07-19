@@ -7,7 +7,7 @@ public class MainMenu {
     public void display() {
         JFrame frame = new JFrame("Hospital Management System");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
+        frame.setSize(500, 400);
 
         JPanel panel = new JPanel();
         frame.add(panel);
@@ -28,7 +28,7 @@ public class MainMenu {
         panel.add(userManagementButton);
         userManagementButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Implement the functionality for user management here
+                // Implementation of the functionality for user management here
                 SwingUtilities.invokeLater(() -> new UsersView().display());
             }
         });
