@@ -29,7 +29,7 @@ public class MainMenu {
         userManagementButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Implement the functionality for user management here
-
+                SwingUtilities.invokeLater(() -> new UsersView().display());
             }
         });
 
