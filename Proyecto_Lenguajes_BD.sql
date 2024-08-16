@@ -79,6 +79,16 @@ CREATE TABLE Personal (
       REFERENCES Departamento(ID_Departamento)
 );
 
+--Forma de dropear las tablas por si algo sale mal
+DROP TABLE Hospital;
+DROP TABLE Departamento;
+DROP TABLE Doctor;
+DROP TABLE Paciente;
+DROP TABLE Citas;
+DROP TABLE Receta;
+DROP TABLE Personal;
+
+
 
 /*DATOS*/
 --Tabla Hospital
