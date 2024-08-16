@@ -117,17 +117,18 @@ INSERT INTO Departamento (ID_Departamento, Nombre_Departamento) VALUES (210, 'Fi
 
 
 --Tabla Doctor 
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (1, 'Cardiología', 'Dr. Jorge Pérez', 1);
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (2, 'Pediatría', 'Dra. Ana Ruiz', 2);
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (3, 'Ginecología', 'Dr. Luis Hernández', 3);
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (4, 'Dermatología', 'Dra. María López', 4);
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (5, 'Neurología', 'Dr. Carlos Martínez', 5);
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (6, 'Oncología', 'Dra. Laura García', 6);
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (7, 'Ortopedia', 'Dr. Ricardo Sánchez', 7);
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (8, 'Oftalmología', 'Dra. Claudia Rodríguez', 8);
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (9, 'Psiquiatría', 'Dr. Manuel Fernández', 9);
-INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (10, 'Urología', 'Dr. Fernando Jiménez', 10);
-
+-- Tabla Doctor 
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (1, 'Cardiología', 'Dr. Jorge Pérez', 201);
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (2, 'Pediatría', 'Dra. Ana Ruiz', 202);
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (3, 'Ginecología', 'Dr. Luis Hernández', 203);
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (4, 'Dermatología', 'Dra. María López', 204);
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (5, 'Neurología', 'Dr. Carlos Martínez', 205);
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (6, 'Oncología', 'Dra. Laura García', 206);
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (7, 'Ortopedia', 'Dr. Ricardo Sánchez', 207);
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (8, 'Oftalmología', 'Dra. Claudia Rodríguez', 208);
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (9, 'Psiquiatría', 'Dr. Manuel Fernández', 209);
+INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento) VALUES (10, 'Urología', 'Dr. Fernando Jiménez', 210);
+/*
 UPDATE Doctor SET ID_Departamento = 201 WHERE ID_Doctor = 1;
 UPDATE Doctor SET ID_Departamento = 202 WHERE ID_Doctor = 2;
 UPDATE Doctor SET ID_Departamento = 203 WHERE ID_Doctor = 3;
@@ -138,6 +139,18 @@ UPDATE Doctor SET ID_Departamento = 207 WHERE ID_Doctor = 7;
 UPDATE Doctor SET ID_Departamento = 208 WHERE ID_Doctor = 8;
 UPDATE Doctor SET ID_Departamento = 209 WHERE ID_Doctor = 9;
 UPDATE Doctor SET ID_Departamento = 210 WHERE ID_Doctor = 10;
+*/
+--Tabla Paciente
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (1, 'Carlos', 'Gómez', 'López', 5551234567, 'Calle 1, Ciudad A', 'carlos.gomez@mail.com');
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (2, 'Ana', 'Martínez', 'Pérez', 5559876543, 'Calle 2, Ciudad B', 'ana.martinez@mail.com');
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (3, 'Luis', 'Ramírez', 'García', 5554567890, 'Calle 3, Ciudad C', 'luis.ramirez@mail.com');
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (4, 'María', 'López', 'Rodríguez', 5556543210, 'Calle 4, Ciudad D', 'maria.lopez@mail.com');
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (5, 'Jorge', 'García', 'Martínez', 5557890123, 'Calle 5, Ciudad E', 'jorge.garcia@mail.com');
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (6, 'Lucía', 'Hernández', 'Gómez', 5558901234, 'Calle 6, Ciudad F', 'lucia.hernandez@mail.com');
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (7, 'Raúl', 'Pérez', 'Martínez', 5553210987, 'Calle 7, Ciudad G', 'raul.perez@mail.com');
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (8, 'Claudia', 'Rodríguez', 'González', 5554321098, 'Calle 8, Ciudad H', 'claudia.rodriguez@mail.com');
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (9, 'Andrés', 'Sánchez', 'Hernández', 5555678901, 'Calle 9, Ciudad I', 'andres.sanchez@mail.com');
+INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (10, 'Marta', 'Fernández', 'Ramírez', 5556789012, 'Calle 10, Ciudad J', 'marta.fernandez@mail.com');
 
 --Tabla Receta
 INSERT INTO Receta (ID_Receta, ID_Paciente, Nombre_Medicina, Fecha_Receta) VALUES (1, 1, 'Paracetamol', TO_DATE('2024-08-15', 'YYYY-MM-DD'));
@@ -163,18 +176,6 @@ INSERT INTO Citas (ID_Paciente, ID_Doctor, Fecha_Cita, Hora_Cita) VALUES (8, 8, 
 INSERT INTO Citas (ID_Paciente, ID_Doctor, Fecha_Cita, Hora_Cita) VALUES (9, 9, TO_DATE('2024-08-23', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-08-23 17:00:00', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO Citas (ID_Paciente, ID_Doctor, Fecha_Cita, Hora_Cita) VALUES (10, 10, TO_DATE('2024-08-24', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-08-24 18:00:00', 'YYYY-MM-DD HH24:MI:SS'));
 
-
---Tabla Paciente
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (1, 'Carlos', 'Gómez', 'López', 5551234567, 'Calle 1, Ciudad A', 'carlos.gomez@mail.com');
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (2, 'Ana', 'Martínez', 'Pérez', 5559876543, 'Calle 2, Ciudad B', 'ana.martinez@mail.com');
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (3, 'Luis', 'Ramírez', 'García', 5554567890, 'Calle 3, Ciudad C', 'luis.ramirez@mail.com');
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (4, 'María', 'López', 'Rodríguez', 5556543210, 'Calle 4, Ciudad D', 'maria.lopez@mail.com');
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (5, 'Jorge', 'García', 'Martínez', 5557890123, 'Calle 5, Ciudad E', 'jorge.garcia@mail.com');
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (6, 'Lucía', 'Hernández', 'Gómez', 5558901234, 'Calle 6, Ciudad F', 'lucia.hernandez@mail.com');
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (7, 'Raúl', 'Pérez', 'Martínez', 5553210987, 'Calle 7, Ciudad G', 'raul.perez@mail.com');
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (8, 'Claudia', 'Rodríguez', 'González', 5554321098, 'Calle 8, Ciudad H', 'claudia.rodriguez@mail.com');
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (9, 'Andrés', 'Sánchez', 'Hernández', 5555678901, 'Calle 9, Ciudad I', 'andres.sanchez@mail.com');
-INSERT INTO Paciente (ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, Numero_Paciente, Direccion_Paciente, Correo_Paciente) VALUES (10, 'Marta', 'Fernández', 'Ramírez', 5556789012, 'Calle 10, Ciudad J', 'marta.fernandez@mail.com');
 
 --Tabla Personal
 INSERT INTO Personal (ID_Personal, Nombre_Personal, PrimApellido_Personal, SegApellido_Personal, Numero_Personal, Direccion_Personal, Correo_Personal, ID_Departamento) VALUES (1, 'Juan', 'Hernández', 'García', 5559871234, 'Calle 11, Ciudad A', 'juan.hernandez@mail.com', 201);
