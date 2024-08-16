@@ -316,3 +316,24 @@ EXCEPTION
         p_Correo_Paciente := NULL;
 END;
 
+/* STORE PROCEDURE CON EXPRESIONES REGULARES */
+--Verificar inserción de correo de Paciente
+CREATE OR REPLACE PROCEDURE VALIDAR_CORREO(p_ID_Paciente NUMBER, p_Correo_Paciente OUT VARCHAR2, p_Estado OUT VARCHAR2) 
+AS
+BEGIN
+    SELECT Correo_Paciente
+    INTO p_Correo_Paciente
+    FROM Paciente
+    WHERE ID_Paciente = p_ID_Paciente;
+    
+    IF REGEXP_LIKE(p_Correo_Paciente, '^[^@]+@[^@]+\.[^@]+$') THEN
+        p_Estado := 'Correo válido';
+    ELSE
+        p_Estado := 'Correo inválido';
+    END IF;
+    
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        p_Correo_Paciente := NULL;
+        p_Estado := 'No se ha encontrado información relacionada a este correo';
+END;
