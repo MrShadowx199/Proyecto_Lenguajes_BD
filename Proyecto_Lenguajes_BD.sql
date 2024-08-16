@@ -187,3 +187,132 @@ SELECT * FROM paciente;
 SELECT * FROM personal;
 SELECT * FROM receta;
 
+/*STORE PROCEDURES*/
+
+/*Tabla Doctor*/
+--Insertar un doctor 
+CREATE OR REPLACE PROCEDURE INSERTAR_DOCTOR(
+    p_ID_Doctor NUMBER,
+    p_Especializacion VARCHAR2,
+    p_Nombre_Doctor VARCHAR2,
+    p_ID_Departamento NUMBER
+) AS
+BEGIN
+    INSERT INTO Doctor (ID_Doctor, Especializacion, Nombre_Doctor, ID_Departamento)
+    VALUES (p_ID_Doctor, p_Especializacion, p_Nombre_Doctor, p_ID_Departamento);
+END;
+
+--Eliminar Doctor 
+CREATE OR REPLACE PROCEDURE ELIMINAR_DOCTOR(p_ID_Doctor NUMBER) AS
+BEGIN
+    DELETE FROM Doctor WHERE ID_Doctor = p_ID_Doctor;
+END;
+
+--Actualizar Doctor 
+CREATE OR REPLACE PROCEDURE ACTUALIZAR_DOCTOR(
+    p_ID_Doctor NUMBER,
+    p_Especializacion VARCHAR2,
+    p_Nombre_Doctor VARCHAR2,
+    p_ID_Departamento NUMBER
+) AS
+BEGIN
+    UPDATE Doctor
+    SET Especializacion = p_Especializacion,
+        Nombre_Doctor = p_Nombre_Doctor,
+        ID_Departamento = p_ID_Departamento
+    WHERE ID_Doctor = p_ID_Doctor;
+END;
+
+--Buscar Doctor 
+CREATE OR REPLACE PROCEDURE BUSCAR_DOCTOR(
+    p_ID_Doctor NUMBER,
+    p_Nombre_Doctor OUT VARCHAR2,
+    p_Especializacion OUT VARCHAR2
+) AS
+BEGIN
+    SELECT Nombre_Doctor, Especializacion
+    INTO p_Nombre_Doctor, p_Especializacion
+    FROM Doctor
+    WHERE ID_Doctor = p_ID_Doctor;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        p_Nombre_Doctor := NULL;
+        p_Especializacion := NULL;
+END;
+
+
+/*Tabla Paciente*/
+--Insertar Paciente 
+CREATE OR REPLACE PROCEDURE INSERTAR_PACIENTE(
+    p_ID_Paciente NUMBER,
+    p_Nombre_Paciente VARCHAR2,
+    p_PriApellido_Paciente VARCHAR2,
+    p_SegApellido_Paciente VARCHAR2,
+    p_Numero_Paciente NUMBER,
+    p_Direccion_Paciente VARCHAR2,
+    p_Correo_Paciente VARCHAR2
+) AS
+BEGIN
+    INSERT INTO Paciente (
+        ID_Paciente, Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, 
+        Numero_Paciente, Direccion_Paciente, Correo_Paciente
+    ) VALUES (
+        p_ID_Paciente, p_Nombre_Paciente, p_PriApellido_Paciente, p_SegApellido_Paciente,
+        p_Numero_Paciente, p_Direccion_Paciente, p_Correo_Paciente
+    );
+END;
+
+--Actualizar Paciente
+CREATE OR REPLACE PROCEDURE ACTUALIZAR_PACIENTE(
+    p_ID_Paciente NUMBER,
+    p_Nombre_Paciente VARCHAR2,
+    p_PriApellido_Paciente VARCHAR2,
+    p_SegApellido_Paciente VARCHAR2,
+    p_Numero_Paciente NUMBER,
+    p_Direccion_Paciente VARCHAR2,
+    p_Correo_Paciente VARCHAR2
+) AS
+BEGIN
+    UPDATE Paciente
+    SET Nombre_Paciente = p_Nombre_Paciente,
+        PriApellido_Paciente = p_PriApellido_Paciente,
+        SegApellido_Paciente = p_SegApellido_Paciente,
+        Numero_Paciente = p_Numero_Paciente,
+        Direccion_Paciente = p_Direccion_Paciente,
+        Correo_Paciente = p_Correo_Paciente
+    WHERE ID_Paciente = p_ID_Paciente;
+END;
+
+--Eliminar Paciente
+CREATE OR REPLACE PROCEDURE ELIMINAR_PACIENTE(p_ID_Paciente NUMBER) AS
+BEGIN
+    DELETE FROM Paciente WHERE ID_Paciente = p_ID_Paciente;
+END;
+
+--Buscar Paciente
+CREATE OR REPLACE PROCEDURE BUSCAR_PACIENTE(
+    p_ID_Paciente NUMBER,
+    p_Nombre_Paciente OUT VARCHAR2,
+    p_PriApellido_Paciente OUT VARCHAR2,
+    p_SegApellido_Paciente OUT VARCHAR2,
+    p_Numero_Paciente OUT NUMBER,
+    p_Direccion_Paciente OUT VARCHAR2,
+    p_Correo_Paciente OUT VARCHAR2
+) AS
+BEGIN
+    SELECT Nombre_Paciente, PriApellido_Paciente, SegApellido_Paciente, 
+           Numero_Paciente, Direccion_Paciente, Correo_Paciente
+    INTO p_Nombre_Paciente, p_PriApellido_Paciente, p_SegApellido_Paciente, 
+         p_Numero_Paciente, p_Direccion_Paciente, p_Correo_Paciente
+    FROM Paciente
+    WHERE ID_Paciente = p_ID_Paciente;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        p_Nombre_Paciente := NULL;
+        p_PriApellido_Paciente := NULL;
+        p_SegApellido_Paciente := NULL;
+        p_Numero_Paciente := NULL;
+        p_Direccion_Paciente := NULL;
+        p_Correo_Paciente := NULL;
+END;
+
