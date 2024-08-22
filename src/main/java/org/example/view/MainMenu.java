@@ -1,7 +1,12 @@
 package org.example.view;
+import org.example.controller.PersonalController;
+import org.example.model.DBConnection;
+import org.example.model.Personal;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class MainMenu {
     public void display() {
@@ -23,13 +28,29 @@ public class MainMenu {
         label.setBounds(150, 20, 120, 25);
         panel.add(label);
 
-        JButton userManagementButton = new JButton("Gestión de Usuarios");
+        JButton userManagementButton = new JButton("Gestión de Personal");
         userManagementButton.setBounds(100, 60, 200, 25);
         panel.add(userManagementButton);
         userManagementButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Implementation of the functionality for user management here
-                SwingUtilities.invokeLater(() -> new UsersView().display());
+                // Crear una instancia de DBConnection
+                DBConnection dbConnection = new DBConnection();
+
+                // Crear una instancia del controlador
+                PersonalController controller = new PersonalController();
+
+                // Cargar la lista de Personal desde la base de datos
+                List<Personal> personalList = controller.loadList(dbConnection);
+
+                // Crear una instancia de la vista y mostrar los datos
+                PersonalView view = new PersonalView();
+                view.displayPersonalList(personalList);
+
+                // Hacer visible el JFrame
+                view.setVisible(true);
+
+                // Cerrar la conexión después de cargar los datos
+                dbConnection.close();
             }
         });
 
