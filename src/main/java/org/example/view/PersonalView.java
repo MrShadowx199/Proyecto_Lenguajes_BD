@@ -12,7 +12,8 @@ public class PersonalView extends JFrame {
 
     private JTable table;
     private DefaultTableModel tableModel;
-    private JButton closeButton;
+    private JButton closeButton, addButton;
+    private JTextField idField, nameField, firstLastNameField, secondLastNameField, numberField, addressField, emailField, departmentIdField;
 
     public PersonalView() {
         // Configuración del JFrame
@@ -31,22 +32,60 @@ public class PersonalView extends JFrame {
         table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
 
+        // Crear campos de texto para agregar personal
+        idField = new JTextField(10);
+        nameField = new JTextField(10);
+        firstLastNameField = new JTextField(10);
+        secondLastNameField = new JTextField(10);
+        numberField = new JTextField(10);
+        addressField = new JTextField(10);
+        emailField = new JTextField(10);
+        departmentIdField = new JTextField(10);
+
+        // Crear el botón de agregar (vacío por ahora)
+        addButton = new JButton("Agregar");
+
+        // Crear un panel para los campos de texto en 2 filas y 4 columnas
+        JPanel inputPanel = new JPanel(new GridLayout(2, 4, 5, 5)); // 2 filas, 4 columnas, espaciado horizontal y vertical de 5px
+        inputPanel.add(new JLabel("ID Personal"));
+        inputPanel.add(new JLabel("Nombre"));
+        inputPanel.add(new JLabel("Primer Apellido"));
+        inputPanel.add(new JLabel("Segundo Apellido"));
+        inputPanel.add(idField);
+        inputPanel.add(nameField);
+        inputPanel.add(firstLastNameField);
+        inputPanel.add(secondLastNameField);
+
+        JPanel inputPanel2 = new JPanel(new GridLayout(2, 4, 5, 5)); // 2 filas, 4 columnas, espaciado horizontal y vertical de 5px
+        inputPanel2.add(new JLabel("Número"));
+        inputPanel2.add(new JLabel("Dirección"));
+        inputPanel2.add(new JLabel("Correo"));
+        inputPanel2.add(new JLabel("ID Departamento"));
+        inputPanel2.add(numberField);
+        inputPanel2.add(addressField);
+        inputPanel2.add(emailField);
+        inputPanel2.add(departmentIdField);
+
+        // Panel principal para los campos de texto
+        JPanel mainInputPanel = new JPanel(new BorderLayout());
+        mainInputPanel.add(inputPanel, BorderLayout.NORTH);
+        mainInputPanel.add(inputPanel2, BorderLayout.CENTER);
+
         // Crear el botón de cierre
         closeButton = new JButton("Cerrar");
-        closeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose(); // Cierra solo el JFrame actual
-            }
-        });
+        closeButton.addActionListener(e -> dispose()); // Cierra solo el JFrame actual
 
         // Panel para el botón
         JPanel buttonPanel = new JPanel();
+        buttonPanel.add(addButton);
         buttonPanel.add(closeButton);
 
         // Agregar componentes al JFrame
-        add(scrollPane, BorderLayout.CENTER);
-        add(buttonPanel, BorderLayout.SOUTH); // Agregar el botón en la parte inferior
+        add(mainInputPanel, BorderLayout.NORTH); // Panel de entrada en la parte superior
+        add(scrollPane, BorderLayout.CENTER); // Tabla en el centro
+        add(buttonPanel, BorderLayout.SOUTH); // Botones en la parte inferior
     }
+
 
     // Metodo para cargar la lista de Personal en la tabla
     public void displayPersonalList(List<Personal> personalList) {

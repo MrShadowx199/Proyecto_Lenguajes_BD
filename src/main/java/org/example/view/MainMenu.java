@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class MainMenu {
+
     public void display() {
         JFrame frame = new JFrame("Hospital Management System");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -124,4 +125,5 @@ public class MainMenu {
             }
         });
     }
+
 }

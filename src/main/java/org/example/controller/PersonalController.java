@@ -60,4 +60,5 @@ public class PersonalController {
         System.out.println("ID Departamento: " + p.getIdDepartamento());
         System.out.println("--------------------");
     }
+
 }

@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="28ddac7f-115b-4a61-94e7-dc02bca226ee" name="Changes" comment="Arreglos en la vision del personal y la conexión de base de datos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/PersonalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/PersonalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/PersonalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/UsersView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/PersonalView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/PersonalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/PersonalView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +23,28 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Argom23"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MrShadowx199/Proyecto_Lenguajes_BD.git",
+    "accountId": "5bbe2bed-89a7-4df6-b4a9-16f49e9eec84"
+  }
+}]]></component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -94,7 +110,7 @@
       <updated>1721410207357</updated>
       <workItem from="1721410208968" duration="23000" />
       <workItem from="1721410237264" duration="2825000" />
-      <workItem from="1724268153384" duration="10011000" />
+      <workItem from="1724268153384" duration="12970000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -104,7 +120,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721410297928</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Arreglos en la vision del personal y la conexión de base de datos">
+      <option name="closed" value="true" />
+      <created>1724291296606</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1724291296606</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Arreglos en la vision del personal y la conexión de base de datos">
+      <option name="closed" value="true" />
+      <created>1724291363771</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1724291363771</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
