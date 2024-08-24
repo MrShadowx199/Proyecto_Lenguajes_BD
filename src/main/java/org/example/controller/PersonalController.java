@@ -3,6 +3,8 @@ package org.example.controller;
 import org.example.model.DBConnection;
 import org.example.model.Personal;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,7 +33,6 @@ public class PersonalController {
                         rs.getInt("ID_DEPARTAMENTO")
                 );
                 personalList.add(p);
-                // logPersonal(p);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,17 +49,30 @@ public class PersonalController {
         return personalList;
     }
 
-    private void logPersonal(Personal p) {
-        System.out.println("Personal agregado: ");
-        System.out.println("ID Personal: " + p.getIdPersonal());
-        System.out.println("Nombre: " + p.getNombrePersonal());
-        System.out.println("Primer Apellido: " + p.getPrimerApellido());
-        System.out.println("Segundo Apellido: " + p.getSegundoApellido());
-        System.out.println("Número: " + p.getNumeroPersonal());
-        System.out.println("Dirección: " + p.getDireccionPersonal());
-        System.out.println("Correo: " + p.getCorreoPersonal());
-        System.out.println("ID Departamento: " + p.getIdDepartamento());
-        System.out.println("--------------------");
+    public void insertarPaciente(DBConnection db, int idPaciente, String nombrePaciente, String priApellido, String segApellido, int numeroPaciente, String direccion, String correo) {
+        String sql = "{ call INSERTAR_PACIENTE(?, ?, ?, ?, ?, ?, ?) }";
+
+        try (Connection conn = db.getConnection();
+             CallableStatement stmt = conn.prepareCall(sql)) {
+
+            // Establecer los parámetros de entrada
+            stmt.setInt(1, idPaciente);
+            stmt.setString(2, nombrePaciente);
+            stmt.setString(3, priApellido);
+            stmt.setString(4, segApellido);
+            stmt.setInt(5, numeroPaciente);
+            stmt.setString(6, direccion);
+            stmt.setString(7, correo);
+
+            // Ejecutar el procedimiento almacenado
+            stmt.executeUpdate();
+
+            System.out.println("Paciente insertado con éxito.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
 
 }

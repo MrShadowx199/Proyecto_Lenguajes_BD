@@ -44,7 +44,7 @@ public class MainMenu {
                 List<Personal> personalList = controller.loadList(dbConnection);
 
                 // Crear una instancia de la vista y mostrar los datos
-                PersonalView view = new PersonalView();
+                PersonalView view = new PersonalView(dbConnection);
                 view.displayPersonalList(personalList);
 
                 // Hacer visible el JFrame

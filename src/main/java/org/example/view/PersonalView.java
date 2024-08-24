@@ -1,6 +1,9 @@
 package org.example.view;
 
+import org.example.controller.PersonalController;
+import org.example.model.DBConnection;
 import org.example.model.Personal;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -14,8 +17,12 @@ public class PersonalView extends JFrame {
     private DefaultTableModel tableModel;
     private JButton closeButton, addButton;
     private JTextField idField, nameField, firstLastNameField, secondLastNameField, numberField, addressField, emailField, departmentIdField;
+    private PersonalController personalController;
 
-    public PersonalView() {
+    public PersonalView(DBConnection dbConnection) {
+        // Inicializar el controlador
+        personalController = new PersonalController();
+
         // Configuración del JFrame
         setTitle("Lista de Personal");
         setSize(800, 600);
@@ -42,8 +49,27 @@ public class PersonalView extends JFrame {
         emailField = new JTextField(10);
         departmentIdField = new JTextField(10);
 
-        // Crear el botón de agregar (vacío por ahora)
+        // Crear el botón de agregar
         addButton = new JButton("Agregar");
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Obtener datos de los campos de texto
+                int idPaciente = Integer.parseInt(idField.getText());
+                String nombrePaciente = nameField.getText();
+                String priApellido = firstLastNameField.getText();
+                String segApellido = secondLastNameField.getText();
+                int numeroPaciente = Integer.parseInt(numberField.getText());
+                String direccion = addressField.getText();
+                String correo = emailField.getText();
+
+                // Llamar al metodo del controlador para insertar el nuevo paciente
+                personalController.insertarPaciente(dbConnection, idPaciente, nombrePaciente, priApellido, segApellido, numeroPaciente, direccion, correo);
+
+                // Actualizar la tabla con los nuevos datos
+                displayPersonalList(personalController.loadList(dbConnection));
+            }
+        });
 
         // Crear un panel para los campos de texto en 2 filas y 4 columnas
         JPanel inputPanel = new JPanel(new GridLayout(2, 4, 5, 5)); // 2 filas, 4 columnas, espaciado horizontal y vertical de 5px
@@ -85,7 +111,6 @@ public class PersonalView extends JFrame {
         add(scrollPane, BorderLayout.CENTER); // Tabla en el centro
         add(buttonPanel, BorderLayout.SOUTH); // Botones en la parte inferior
     }
-
 
     // Metodo para cargar la lista de Personal en la tabla
     public void displayPersonalList(List<Personal> personalList) {

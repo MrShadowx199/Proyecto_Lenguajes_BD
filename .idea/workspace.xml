@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28ddac7f-115b-4a61-94e7-dc02bca226ee" name="Changes" comment="Arreglos en la vista del personal">
+    <list default="true" id="28ddac7f-115b-4a61-94e7-dc02bca226ee" name="Changes" comment="Actualización de Base de datos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/PersonalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/PersonalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/PersonalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/PersonalView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +111,7 @@
       <workItem from="1721410208968" duration="23000" />
       <workItem from="1721410237264" duration="2825000" />
       <workItem from="1724268153384" duration="13351000" />
-      <workItem from="1724525816446" duration="1665000" />
+      <workItem from="1724525816446" duration="4441000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -142,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724303627348</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Actualización de Base de datos">
+      <option name="closed" value="true" />
+      <created>1724530231217</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724530231217</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +174,7 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Arreglos en la vision del personal y la conexión de base de datos" />
     <MESSAGE value="Arreglos en la vista del personal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arreglos en la vista del personal" />
+    <MESSAGE value="Actualización de Base de datos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Actualización de Base de datos" />
   </component>
 </project>
