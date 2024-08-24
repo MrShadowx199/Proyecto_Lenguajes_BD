@@ -15,12 +15,14 @@ public class PersonalView extends JFrame {
 
     private JTable table;
     private DefaultTableModel tableModel;
-    private JButton closeButton, addButton;
-    private JTextField idField, nameField, firstLastNameField, secondLastNameField, numberField, addressField, emailField, departmentIdField;
+    private JButton closeButton, addButton, deleteButton;
+    private JTextField idField, nameField, firstLastNameField, secondLastNameField, numberField, addressField, emailField, departmentIdField, deleteIdField;
     private PersonalController personalController;
+    private DBConnection dbConnection;
 
     public PersonalView(DBConnection dbConnection) {
         // Inicializar el controlador
+        this.dbConnection = dbConnection;
         personalController = new PersonalController();
 
         // Configuración del JFrame
@@ -54,20 +56,17 @@ public class PersonalView extends JFrame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Obtener datos de los campos de texto
-                int idPaciente = Integer.parseInt(idField.getText());
-                String nombrePaciente = nameField.getText();
-                String priApellido = firstLastNameField.getText();
-                String segApellido = secondLastNameField.getText();
-                int numeroPaciente = Integer.parseInt(numberField.getText());
-                String direccion = addressField.getText();
-                String correo = emailField.getText();
+                addPersonal();
+            }
+        });
 
-                // Llamar al metodo del controlador para insertar el nuevo paciente
-                personalController.insertarPaciente(dbConnection, idPaciente, nombrePaciente, priApellido, segApellido, numeroPaciente, direccion, correo);
-
-                // Actualizar la tabla con los nuevos datos
-                displayPersonalList(personalController.loadList(dbConnection));
+        // Crear campo de texto y botón para eliminar personal
+        deleteIdField = new JTextField(10);
+        deleteButton = new JButton("Eliminar");
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deletePersonal();
             }
         });
 
@@ -97,11 +96,17 @@ public class PersonalView extends JFrame {
         mainInputPanel.add(inputPanel, BorderLayout.NORTH);
         mainInputPanel.add(inputPanel2, BorderLayout.CENTER);
 
+        // Crear un panel para el campo de eliminación y el botón
+        JPanel deletePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        deletePanel.add(new JLabel("ID a Eliminar:"));
+        deletePanel.add(deleteIdField);
+        deletePanel.add(deleteButton);
+
         // Crear el botón de cierre
         closeButton = new JButton("Cerrar");
         closeButton.addActionListener(e -> dispose()); // Cierra solo el JFrame actual
 
-        // Panel para el botón
+        // Panel para los botones
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(addButton);
         buttonPanel.add(closeButton);
@@ -109,7 +114,11 @@ public class PersonalView extends JFrame {
         // Agregar componentes al JFrame
         add(mainInputPanel, BorderLayout.NORTH); // Panel de entrada en la parte superior
         add(scrollPane, BorderLayout.CENTER); // Tabla en el centro
+        add(deletePanel, BorderLayout.WEST); // Panel de eliminación a la izquierda
         add(buttonPanel, BorderLayout.SOUTH); // Botones en la parte inferior
+
+        // Cargar la lista inicial de personal
+        loadPersonalList();
     }
 
     // Metodo para cargar la lista de Personal en la tabla
@@ -130,5 +139,34 @@ public class PersonalView extends JFrame {
                     p.getIdDepartamento()
             });
         }
+    }
+
+    // Metodo para agregar un nuevo personal
+    private void addPersonal() {
+        int idPersonal = Integer.parseInt(idField.getText());
+        String nombre = nameField.getText();
+        String primerApellido = firstLastNameField.getText();
+        String segundoApellido = secondLastNameField.getText();
+        String numero = numberField.getText();
+        String direccion = addressField.getText();
+        String correo = emailField.getText();
+        int idDepartamento = Integer.parseInt(departmentIdField.getText());
+
+        Personal personal = new Personal(idPersonal, nombre, primerApellido, segundoApellido, numero, direccion, correo, idDepartamento);
+        personalController.addPersonal(dbConnection, personal);
+        loadPersonalList(); // Actualizar la lista después de agregar
+    }
+
+    // Metodo para eliminar un personal
+    private void deletePersonal() {
+        int idPersonal = Integer.parseInt(deleteIdField.getText());
+        personalController.deletePersonal(dbConnection, idPersonal);
+        loadPersonalList(); // Actualizar la lista después de eliminar
+    }
+
+    // Metodo para cargar la lista de personal desde el controlador
+    private void loadPersonalList() {
+        List<Personal> personalList = personalController.loadList(dbConnection);
+        displayPersonalList(personalList);
     }
 }

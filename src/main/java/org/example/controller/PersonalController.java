@@ -49,30 +49,44 @@ public class PersonalController {
         return personalList;
     }
 
-    public void insertarPaciente(DBConnection db, int idPaciente, String nombrePaciente, String priApellido, String segApellido, int numeroPaciente, String direccion, String correo) {
-        String sql = "{ call INSERTAR_PACIENTE(?, ?, ?, ?, ?, ?, ?) }";
+    public void addPersonal(DBConnection db, Personal personal) {
+        String sql = "{ call AGREGAR_PERSONAL(?, ?, ?, ?, ?, ?, ?, ?) }";
 
         try (Connection conn = db.getConnection();
              CallableStatement stmt = conn.prepareCall(sql)) {
 
-            // Establecer los parámetros de entrada
-            stmt.setInt(1, idPaciente);
-            stmt.setString(2, nombrePaciente);
-            stmt.setString(3, priApellido);
-            stmt.setString(4, segApellido);
-            stmt.setInt(5, numeroPaciente);
-            stmt.setString(6, direccion);
-            stmt.setString(7, correo);
+            // Establecer los parámetros del procedimiento almacenado
+            stmt.setInt(1, personal.getIdPersonal());
+            stmt.setString(2, personal.getNombrePersonal());
+            stmt.setString(3, personal.getPrimerApellido());
+            stmt.setString(4, personal.getSegundoApellido());
+            stmt.setString(5, personal.getNumeroPersonal());
+            stmt.setString(6, personal.getDireccionPersonal());
+            stmt.setString(7, personal.getCorreoPersonal());
+            stmt.setInt(8, personal.getIdDepartamento());
 
             // Ejecutar el procedimiento almacenado
             stmt.executeUpdate();
-
-            System.out.println("Paciente insertado con éxito.");
-
+            System.out.println("Personal agregado con éxito.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    public void deletePersonal(DBConnection db, int idPersonal) {
+        String sql = "{ call ELIMINAR_PERSONAL(?) }";
 
+        try (Connection conn = db.getConnection();
+             CallableStatement stmt = conn.prepareCall(sql)) {
+
+            // Establecer el parámetro del procedimiento almacenado
+            stmt.setInt(1, idPersonal);
+
+            // Ejecutar el procedimiento almacenado
+            stmt.executeUpdate();
+            System.out.println("Personal eliminado con éxito.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
