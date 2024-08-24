@@ -85,7 +85,7 @@ public class MainMenu {
             }
         });
 
-        JButton searchAndFilterButton = new JButton("Búsqueda y Filtrado");
+        JButton searchAndFilterButton = new JButton("Búsqueda de Hospitales");
         searchAndFilterButton.setBounds(100, 180, 200, 25);
         panel.add(searchAndFilterButton);
         searchAndFilterButton.addActionListener(new ActionListener() {
@@ -95,7 +95,7 @@ public class MainMenu {
             }
         });
 
-        JButton appointmentHistoryButton = new JButton("Historial de Citas");
+        JButton appointmentHistoryButton = new JButton("Historial de Recetas");
         appointmentHistoryButton.setBounds(100, 210, 200, 25);
         panel.add(appointmentHistoryButton);
         appointmentHistoryButton.addActionListener(new ActionListener() {
@@ -105,7 +105,7 @@ public class MainMenu {
             }
         });
 
-        JButton reportsAndStatisticsButton = new JButton("Reporte y Estadísticas");
+        JButton reportsAndStatisticsButton = new JButton("Gestion de departamentos");
         reportsAndStatisticsButton.setBounds(100, 240, 200, 25);
         panel.add(reportsAndStatisticsButton);
         reportsAndStatisticsButton.addActionListener(new ActionListener() {

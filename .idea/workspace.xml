@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28ddac7f-115b-4a61-94e7-dc02bca226ee" name="Changes" comment="Actualizacion de Personal">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_Lenguajes_BD.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_Lenguajes_BD.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/PersonalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/PersonalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/PersonalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/PersonalView.java" afterDir="false" />
+    <list default="true" id="28ddac7f-115b-4a61-94e7-dc02bca226ee" name="Changes" comment="Final Modulo Personal">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,7 @@
       <workItem from="1721410208968" duration="23000" />
       <workItem from="1721410237264" duration="2825000" />
       <workItem from="1724268153384" duration="13351000" />
-      <workItem from="1724525816446" duration="11457000" />
+      <workItem from="1724525816446" duration="12052000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -161,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724532674000</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Final Modulo Personal">
+      <option name="closed" value="true" />
+      <created>1724543217118</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1724543217118</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +189,7 @@
     <MESSAGE value="Arreglos en la vista del personal" />
     <MESSAGE value="Actualización de Base de datos" />
     <MESSAGE value="Actualizacion de Personal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Actualizacion de Personal" />
+    <MESSAGE value="Final Modulo Personal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Modulo Personal" />
   </component>
 </project>
