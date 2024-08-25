@@ -1,14 +1,17 @@
 package org.example.view;
 import org.example.controller.PersonalController;
+import org.example.controller.RecetaController;
+import org.example.controller.DepartamentoController;
+
 import org.example.model.DBConnection;
 import org.example.model.Personal;
+import org.example.model.Departamento;
+import org.example.model.Receta;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import org.example.controller.DepartamentoController;
-import org.example.model.Departamento;
 
 public class MainMenu {
 
@@ -102,7 +105,23 @@ public class MainMenu {
         panel.add(appointmentHistoryButton);
         appointmentHistoryButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Implement the functionality for appointment history here
+                 DBConnection dbConnection = new DBConnection();
+
+        // Crear una instancia del controlador de recetas
+        RecetaController controller = new RecetaController();
+
+        // Cargar la lista de Recetas desde la base de datos
+        List<Receta> recetaList = controller.loadList(dbConnection);
+
+        // Crear una instancia de la vista y mostrar los datos
+        RecetaView view = new RecetaView(dbConnection);
+        view.displayRecetaList(recetaList);
+
+        // Hacer visible el JFrame
+        view.setVisible(true);
+
+        // Cerrar la conexión después de cargar los datos
+        dbConnection.close();
 
             }
         });
