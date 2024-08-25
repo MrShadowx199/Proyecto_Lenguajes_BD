@@ -85,7 +85,7 @@ public class MainMenu {
             }
         });
 
-        JButton searchAndFilterButton = new JButton("Búsqueda de Hospitales");
+        JButton searchAndFilterButton = new JButton("Gestión de Hospitales");
         searchAndFilterButton.setBounds(100, 180, 200, 25);
         panel.add(searchAndFilterButton);
         searchAndFilterButton.addActionListener(new ActionListener() {
