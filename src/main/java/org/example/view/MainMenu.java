@@ -12,7 +12,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import org.example.controller.DoctorController;
 import org.example.controller.PacienteController;
+import org.example.model.Doctor;
 import org.example.model.Paciente;
 
 public class MainMenu {
@@ -88,15 +90,31 @@ patientManagementButton.addActionListener(new ActionListener() {
     }
 });
 
-        JButton doctorManagementButton = new JButton("Gestión de Doctores");
-        doctorManagementButton.setBounds(100, 120, 200, 25);
-        panel.add(doctorManagementButton);
-        doctorManagementButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Implement the functionality for doctor management here
+     JButton doctorManagementButton = new JButton("Gestión de Doctores");
+doctorManagementButton.setBounds(100, 120, 200, 25);
+panel.add(doctorManagementButton);
+doctorManagementButton.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        // Crear una instancia de DBConnection
+        DBConnection dbConnection = new DBConnection();
 
-            }
-        });
+        // Crear una instancia del controlador
+        DoctorController controller = new DoctorController();
+
+        // Cargar la lista de Doctores desde la base de datos
+        List<Doctor> doctorList = controller.loadList(dbConnection);
+
+        // Crear una instancia de la vista y mostrar los datos
+        DoctorView view = new DoctorView(dbConnection);
+        view.loadDoctores(); // Para cargar la lista en la vista
+
+        // Hacer visible el JFrame
+        view.setVisible(true);
+
+        // Cerrar la conexión después de cargar los datos
+        dbConnection.close();
+    }
+});
 
         JButton appointmentScheduleButton = new JButton("Agenda de Citas");
         appointmentScheduleButton.setBounds(100, 150, 200, 25);
