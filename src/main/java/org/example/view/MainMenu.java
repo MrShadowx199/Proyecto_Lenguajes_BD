@@ -123,6 +123,12 @@ doctorManagementButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Implement the functionality for appointment scheduling here
 
+                // Crear una conexión a la base de datos
+                DBConnection dbConnection = new DBConnection();  // Asegúrate de configurar correctamente la conexión
+
+                // Crear y mostrar la ventana de reporte de citas
+                CitasView citasView = new CitasView(dbConnection);
+                citasView.setVisible(true);
             }
         });
 

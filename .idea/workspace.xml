@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28ddac7f-115b-4a61-94e7-dc02bca226ee" name="Changes" comment="Final Modulo Personal">
+    <list default="true" id="28ddac7f-115b-4a61-94e7-dc02bca226ee" name="Changes" comment="Arreglo Main Menú">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +110,8 @@
       <workItem from="1721410208968" duration="23000" />
       <workItem from="1721410237264" duration="2825000" />
       <workItem from="1724268153384" duration="13351000" />
-      <workItem from="1724525816446" duration="12052000" />
+      <workItem from="1724525816446" duration="13237000" />
+      <workItem from="1724611007963" duration="3051000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -166,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724543217118</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Arreglo Main Menú">
+      <option name="closed" value="true" />
+      <created>1724543830636</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1724543830636</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +201,7 @@
     <MESSAGE value="Actualización de Base de datos" />
     <MESSAGE value="Actualizacion de Personal" />
     <MESSAGE value="Final Modulo Personal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final Modulo Personal" />
+    <MESSAGE value="Arreglo Main Menú" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arreglo Main Menú" />
   </component>
 </project>
