@@ -5,7 +5,7 @@ import java.sql.*;
 public class DBConnection {
 
     // Variables de conexión
-    private static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl"; // Ajusta URL según tu configuración
+    private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe"; // Ajusta URL según tu configuración
     private static final String USER = "hr"; // Usuario de la base de datos
     private static final String PASSWORD = "hr"; // Contraseña del usuario de la base de datos
 

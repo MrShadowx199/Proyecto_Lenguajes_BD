@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import org.example.model.Departamento;
 
 public class PersonalView extends JFrame {
 
@@ -168,5 +169,9 @@ public class PersonalView extends JFrame {
     private void loadPersonalList() {
         List<Personal> personalList = personalController.loadList(dbConnection);
         displayPersonalList(personalList);
+    }
+
+    void displayDeparatamentoList(List<Departamento> departamentoList) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

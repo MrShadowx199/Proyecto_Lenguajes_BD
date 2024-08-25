@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import org.example.controller.DepartamentoController;
+import org.example.model.Departamento;
 
 public class MainMenu {
 
@@ -110,7 +112,24 @@ public class MainMenu {
         panel.add(reportsAndStatisticsButton);
         reportsAndStatisticsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Implement the functionality for reports and statistics here
+                 // Crear una instancia de DBConnection
+                DBConnection dbConnection = new DBConnection();
+
+                // Crear una instancia del controlador
+                DepartamentoController controller = new DepartamentoController();
+
+                // Cargar la lista de Departamentos desde la base de datos
+                List<Departamento> departamentoList = controller.loadList(dbConnection);
+
+                // Crear una instancia de la vista y mostrar los datos
+                DepartamentoView view = new DepartamentoView(dbConnection);
+                view.displayDepartamentoList(departamentoList);
+
+                // Hacer visible el JFrame
+                view.setVisible(true);
+
+                // Cerrar la conexión después de cargar los datos
+                dbConnection.close();
 
             }
         });
