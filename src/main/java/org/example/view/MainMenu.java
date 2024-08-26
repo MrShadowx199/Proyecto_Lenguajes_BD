@@ -13,8 +13,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import org.example.controller.DoctorController;
+import org.example.controller.HospitalController;
 import org.example.controller.PacienteController;
 import org.example.model.Doctor;
+import org.example.model.Hospital;
 import org.example.model.Paciente;
 
 public class MainMenu {
@@ -137,7 +139,24 @@ doctorManagementButton.addActionListener(new ActionListener() {
         panel.add(searchAndFilterButton);
         searchAndFilterButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Implement the functionality for search and filter here
+                DBConnection dbConnection = new DBConnection();
+
+                // Crear una instancia del controlador para Hospitales
+                HospitalController controller = new HospitalController();
+
+                // Cargar la lista de Hospitales desde la base de datos
+                List<Hospital> hospitalList = controller.loadList(dbConnection);
+
+                // Crear una instancia de la vista y mostrar los datos
+                HospitalView view = new HospitalView(dbConnection);
+                view.displayHospitalList(hospitalList);
+
+                // Hacer visible el JFrame
+                view.setVisible(true);
+
+                // Cerrar la conexión después de cargar los datos
+                dbConnection.close();
+
 
             }
         });
