@@ -142,7 +142,7 @@ doctorManagementButton.addActionListener(new ActionListener() {
                 DBConnection dbConnection = new DBConnection();
 
                 // Crear una instancia del controlador para Hospitales
-                HospitalController controller = new HospitalController();
+                HospitalController controller = new HospitalController(dbConnection);
 
                 // Cargar la lista de Hospitales desde la base de datos
                 List<Hospital> hospitalList = controller.loadList(dbConnection);

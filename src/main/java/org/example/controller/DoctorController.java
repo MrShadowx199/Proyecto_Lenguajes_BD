@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DoctorController {
 
-    // Método para cargar la lista de doctores desde la base de datos
+    // Metodo para cargar la lista de doctores desde la base de datos
     public List<Doctor> loadList(DBConnection dbConnection) {
         List<Doctor> doctores = new ArrayList<>();
         String query = "SELECT ID_DOCTOR, ESPECIALIZACION, NOMBRE_DOCTOR, ID_DEPARTAMENTO FROM DOCTOR";

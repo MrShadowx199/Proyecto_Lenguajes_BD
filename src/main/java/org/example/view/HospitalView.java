@@ -25,7 +25,7 @@ public class HospitalView extends JFrame{
     public HospitalView(DBConnection dbConnection) {
         // Inicializar el controlador
         this.dbConnection = dbConnection;
-        hospitalController = new HospitalController();
+        hospitalController = new HospitalController(dbConnection);
 
         // Configuración del JFrame
         setTitle("Lista de Hospitales");
@@ -122,10 +122,10 @@ public class HospitalView extends JFrame{
 
     // Metodo para agregar un nuevo hospital
     private void addHospital() {
-        int idHospital = Integer.parseInt(idField.getText());
+        long idHospital = Integer.parseInt(idField.getText());
         String nombre = nameField.getText();
         String direccion = addressField.getText();
-        int telefono = Integer.parseInt(phoneField.getText());
+        String telefono = phoneField.getText();
 
         Hospital hospital = new Hospital(idHospital, nombre, direccion, telefono);
         hospitalController.addHospital(dbConnection, hospital);

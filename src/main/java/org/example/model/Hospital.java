@@ -9,22 +9,22 @@ package org.example.model;
  * @author valec
  */
 public class Hospital {
-    private int idHospital;
+    private long idHospital;
     private String nombreHospital;
     private String direccionHospital;
-    private int telefonoHospital;
+    private String telefonoHospital;
 
-    public Hospital(int idHospital, String nombreHospital, String direccionHospital, int telefonoHospital) {
+    public Hospital(long idHospital, String nombreHospital, String direccionHospital, String telefonoHospital) {
         this.idHospital = idHospital;
         this.nombreHospital = nombreHospital;
         this.direccionHospital = direccionHospital;
         this.telefonoHospital = telefonoHospital;
     }
-    public int getIdHospital() {
+    public long getIdHospital() {
         return idHospital;
     }
 
-    public void setIdHospital(int idHospital) {
+    public void setIdHospital(long idHospital) {
         this.idHospital = idHospital;
     }
 
@@ -44,11 +44,11 @@ public class Hospital {
         this.direccionHospital = direccionHospital;
     }
 
-    public int getTelefonoHospital() {
+    public String getTelefonoHospital() {
         return telefonoHospital;
     }
 
-    public void setTelefonoHospital(int telefonoHospital) {
+    public void setTelefonoHospital(String telefonoHospital) {
         this.telefonoHospital = telefonoHospital;
     }
 }

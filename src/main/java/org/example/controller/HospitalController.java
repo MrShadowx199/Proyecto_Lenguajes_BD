@@ -1,47 +1,54 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.example.controller;
 
+import oracle.jdbc.OracleTypes;
 import org.example.model.DBConnection;
 import org.example.model.Hospital;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class HospitalController {
+    private DBConnection dbConnection;
+    private List<Hospital> hospitalList;
+
+    public HospitalController(DBConnection dbConnection) {
+        this.dbConnection = dbConnection;
+        this.hospitalList = new ArrayList<>();
+    }
+
     public List<Hospital> loadList(DBConnection db) {
         List<Hospital> hospitalList = new ArrayList<>();
+        Connection connection = null;
+        CallableStatement stmt = null;
         ResultSet rs = null;
-        try {
-            // Llama al procedimiento almacenado
-            String procedureCall = "{ call GET_HOSPITAL_CURSOR(?) }";
-            rs = db.executeProcedure(procedureCall);
 
-            // Procesa el ResultSet
+        try {
+            connection = db.getConnection();
+            String sql = "{CALL GET_HOSPITAL_CURSOR(?)}";
+            stmt = connection.prepareCall(sql);
+            stmt.registerOutParameter(1, OracleTypes.CURSOR);
+
+            stmt.execute();
+
+            rs = (ResultSet) stmt.getObject(1);
+
             while (rs.next()) {
-                Hospital h = new Hospital(
-                        rs.getInt("ID_HOSPITAL"),
-                        rs.getString("NOMBRE_HOSPITAL"),
-                        rs.getString("DIRECCION_HOSPITAL"),
-                        rs.getInt("TELEFONO_HOSPITAL")
-                );
-                hospitalList.add(h);
+                long idHospital = rs.getLong("ID_Hospital");
+                String nombreHospital = rs.getString("Nombre_Hospital");
+                String direccionHospital = rs.getString("Direccion_Hospital");
+                String telefonoHospital = rs.getString("Telefono_Hospital");
+
+                Hospital hospital = new Hospital(idHospital, nombreHospital, direccionHospital, telefonoHospital);
+                hospitalList.add(hospital);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
         } finally {
-            // Cierra el ResultSet y la conexión en el bloque finally
             try {
                 if (rs != null) rs.close();
-                db.close();
+                if (stmt != null) stmt.close();
+                if (connection != null) connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -50,39 +57,55 @@ public class HospitalController {
     }
 
     public void addHospital(DBConnection db, Hospital hospital) {
-        String sql = "{ call INSERTAR_HOSPITAL(?, ?, ?, ?) }";
+        Connection connection = null;
+        CallableStatement stmt = null;
 
-        try (Connection conn = db.getConnection();
-             CallableStatement stmt = conn.prepareCall(sql)) {
-
-            // Establecer los parámetros del procedimiento almacenado
-            stmt.setInt(1, hospital.getIdHospital());
+        try {
+            connection = db.getConnection();
+            String sql = "{CALL AGREGAR_HOSPITAL(?, ?, ?, ?)}";
+            stmt = connection.prepareCall(sql);
+            stmt.setLong(1, hospital.getIdHospital());
             stmt.setString(2, hospital.getNombreHospital());
             stmt.setString(3, hospital.getDireccionHospital());
-            stmt.setInt(4, hospital.getTelefonoHospital());
+            stmt.setString(4, hospital.getTelefonoHospital());
 
-            // Ejecutar el procedimiento almacenado
             stmt.executeUpdate();
-            System.out.println("Hospital agregado con éxito.");
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public void deleteHospital(DBConnection db, int idHospital) {
-        String sql = "{ call ELIMINAR_HOSPITAL(?) }";
+    public void deleteHospital(DBConnection db, long idHospital) {
+        Connection connection = null;
+        CallableStatement stmt = null;
 
-        try (Connection conn = db.getConnection();
-             CallableStatement stmt = conn.prepareCall(sql)) {
+        try {
+            connection = db.getConnection();
+            String sql = "{CALL ELIMINAR_HOSPITAL(?)}";
+            stmt = connection.prepareCall(sql);
+            stmt.setLong(1, idHospital);
 
-            // Establecer el parámetro del procedimiento almacenado
-            stmt.setInt(1, idHospital);
-
-            // Ejecutar el procedimiento almacenado
             stmt.executeUpdate();
-            System.out.println("Hospital eliminado con éxito.");
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    public void closeConnection() {
+        dbConnection.close();
     }
 }
