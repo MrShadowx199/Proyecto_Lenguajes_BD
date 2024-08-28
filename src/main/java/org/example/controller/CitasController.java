@@ -19,24 +19,19 @@ public class CitasController {
              CallableStatement procedureStmt = conn.prepareCall("{ call DISPLAY_CITAS }");
              CallableStatement dbmsOutputStmt = conn.prepareCall("{ call DBMS_OUTPUT.GET_LINE(?, ?) }")) {
 
-            // Habilitar DBMS_OUTPUT
             callStmt.execute();
 
-            // Ejecutar el procedimiento almacenado DISPLAY_CITAS
             procedureStmt.execute();
 
-            // Variables para capturar la salida de DBMS_OUTPUT
             String line;
             int status;
             Date fechaActual = new Date();
 
-            // Agregar encabezado al reporte
             citasReport.append("Agenda de Citas de "+ new SimpleDateFormat("dd-MM-yyyy").format(fechaActual) + "\n");
             citasReport.append("------------------------------------------------------\n");
             citasReport.append(String.format("%-15s %-15s %-15s %-15s\n", "ID Paciente", "ID Doctor", "Fecha Cita", "Hora Cita"));
             citasReport.append("------------------------------------------------------\n");
 
-            // Recuperar la salida de DBMS_OUTPUT
             do {
                 dbmsOutputStmt.registerOutParameter(1, OracleTypes.VARCHAR);
                 dbmsOutputStmt.registerOutParameter(2, OracleTypes.INTEGER);
@@ -45,7 +40,6 @@ public class CitasController {
                 status = dbmsOutputStmt.getInt(2);
 
                 if (line != null) {
-                    // Extraer datos individuales de la línea
                     String[] fields = line.split(", ");
                     if (fields.length == 4) {
                         citasReport.append(String.format("%-15s %-15s %-15s %-15s\n",
