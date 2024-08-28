@@ -9,61 +9,64 @@ import java.util.List;
 
 public class DoctorController {
 
-    // Metodo para cargar la lista de doctores desde la base de datos
-    public List<Doctor> loadList(DBConnection dbConnection) {
-        List<Doctor> doctores = new ArrayList<>();
-        String query = "SELECT ID_DOCTOR, ESPECIALIZACION, NOMBRE_DOCTOR, ID_DEPARTAMENTO FROM DOCTOR";
-
-        try (Connection connection = dbConnection.getConnection();
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+    public List<Doctor> loadList(DBConnection db) {
+        List<Doctor> doctorList = new ArrayList<>();
+        ResultSet rs = null;
+        try {
+            String procedureCall = "{ call GET_DOCTOR_CURSOR(?) }";
+            rs = db.executeProcedure(procedureCall);
 
             while (rs.next()) {
-                int idDoctor = rs.getInt("ID_DOCTOR");
-                String especializacion = rs.getString("ESPECIALIZACION");
-                String nombreDoctor = rs.getString("NOMBRE_DOCTOR");
-                int idDepartamento = rs.getInt("ID_DEPARTAMENTO");
-
-                Doctor doctor = new Doctor(idDoctor, especializacion, nombreDoctor, idDepartamento);
-                doctores.add(doctor);
+                Doctor d = new Doctor(
+                        rs.getInt("ID_DOCTOR"),
+                        rs.getString("ESPECIALIZACION"),
+                        rs.getString("NOMBRE_DOCTOR"),
+                        rs.getInt("ID_DEPARTAMENTO")
+                );
+                doctorList.add(d);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                db.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return doctorList;
+    }
 
+    public void addDoctor(DBConnection db, Doctor doctor) {
+        String sql = "{ call AGREGAR_DOCTOR(?, ?, ?, ?) }";
+
+        try (Connection conn = db.getConnection();
+             CallableStatement stmt = conn.prepareCall(sql)) {
+
+            stmt.setInt(1, doctor.getIdDoctor());
+            stmt.setString(2, doctor.getEspecializacion());
+            stmt.setString(3, doctor.getNombreDoctor());
+            stmt.setInt(4, doctor.getIdDepartamento());
+
+            stmt.executeUpdate();
+            System.out.println("Doctor agregado con éxito.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return doctores;
     }
 
-    // Método para agregar un nuevo doctor a la base de datos
-    public void addDoctor(DBConnection dbConnection, Doctor doctor) {
-        String query = "INSERT INTO DOCTOR (ID_DOCTOR, ESPECIALIZACION, NOMBRE_DOCTOR, ID_DEPARTAMENTO) VALUES (?, ?, ?, ?)";
+    public void deleteDoctor(DBConnection db, int idDoctor) {
+        String sql = "{ call ELIMINAR_DOCTOR(?) }";
 
-        try (Connection connection = dbConnection.getConnection();
-             PreparedStatement pstmt = connection.prepareStatement(query)) {
+        try (Connection conn = db.getConnection();
+             CallableStatement stmt = conn.prepareCall(sql)) {
 
-            pstmt.setInt(1, doctor.getIdDoctor());
-            pstmt.setString(2, doctor.getEspecializacion());
-            pstmt.setString(3, doctor.getNombreDoctor());
-            pstmt.setInt(4, doctor.getIdDepartamento());
+            stmt.setInt(1, idDoctor);
 
-            pstmt.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Método para eliminar un doctor de la base de datos
-    public void deleteDoctor(DBConnection dbConnection, int idDoctor) {
-        String query = "DELETE FROM DOCTOR WHERE ID_DOCTOR = ?";
-
-        try (Connection connection = dbConnection.getConnection();
-             PreparedStatement pstmt = connection.prepareStatement(query)) {
-
-            pstmt.setInt(1, idDoctor);
-            pstmt.executeUpdate();
-
+            stmt.executeUpdate();
+            System.out.println("Doctor eliminado con éxito.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
